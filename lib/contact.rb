@@ -1,4 +1,6 @@
 class Contact
+  @@contacts = []
+
   attr_reader(:first_name, :last_name, :job_title, :company, :mailing_addresses, :phone_numbers, :email_addresses)
 
   define_method(:initialize) do |attributes|
@@ -10,6 +12,8 @@ class Contact
     @phone_numbers = []
     @email_addresses = []
   end
+
+  # define_singleton_method
 
   define_method(:add_mailing_address) do |address|
     address.set_id(@mailing_addresses.length() + 1)
