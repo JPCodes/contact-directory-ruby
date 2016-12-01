@@ -29,3 +29,8 @@ get('/contacts/all') do
   puts "looking for contacts: ", @contacts
   erb(:all_contacts)
 end
+
+get('/contact/:id') do
+  @current_contact = Contact.find(params.fetch('id').to_i)
+  erb(:contact)
+end
