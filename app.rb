@@ -72,6 +72,8 @@ get('/address/:id1/:id2') do
   erb(:address)
 end
 
+
+# Phone functionality
 get('/contact/new_phone/:id') do
   @current_contact = Contact.find(params.fetch('id').to_i)
   erb(:new_phone)
@@ -88,12 +90,12 @@ post('/create_phone/:id') do
 end
 
 get('/number/:id1/:id2') do
-  # Uses generated ID's to find contact and address
   @current_contact = Contact.find(params.fetch('id2').to_i)
   @current_number = @current_contact.find_phone(params.fetch('id1').to_i)
   erb(:phone)
 end
 
+# Email functionality
 get('/contact/new_email/:id') do
   @current_contact = Contact.find(params.fetch('id').to_i)
   erb(:new_email)
@@ -109,7 +111,6 @@ post('/create_email/:id') do
 end
 
 get('/email/:id1/:id2') do
-  # Uses generated ID's to find contact and address
   @current_contact = Contact.find(params.fetch('id2').to_i)
   @current_email = @current_contact.find_email(params.fetch('id1').to_i)
   erb(:email)
