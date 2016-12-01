@@ -7,6 +7,7 @@ require('email')
 describe(Contact) do
 
   before() do
+    Contact.clear()
     @test_contact = Contact.new({:first_name => 'James', :last_name => 'Padilla', :job_title => 'Stay-at-home Son', :company => 'Yes'})
   end
 
@@ -61,6 +62,13 @@ describe(Contact) do
       new_email = Email.new({:address => 'test@example.com'})
       @test_contact.add_email(new_email)
       expect(@test_contact.find_email(1)).to(eq(new_email))
+    end
+  end
+
+  describe('.find') do
+    it('returns the contact object that matches a unique id') do
+      @test_contact.save()
+      expect(Contact.find(1)).to(eq(@test_contact))
     end
   end
 
