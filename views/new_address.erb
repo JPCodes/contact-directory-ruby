@@ -1,0 +1,15 @@
+<h1>Add a new address</h1>
+
+<form class="" action="/create_address/<%= @current_contact.id() %>" method="post">
+  <label for="street">Street</label>
+  <input type="text" name="street" id="street">
+  <label for="city">City</label>
+  <input type="text" name="city" id="city">
+  <label for="state">State</label>
+  <input type="text" name="state" id="state">
+  <label for="zip">Zip</label>
+  <input type="text" name="zip" id="zip">
+  <label for="type">Type</label>
+  <input type="text" name="type" id="type">
+  <button type="submit" name="button">Add Address</button>
+</form>
