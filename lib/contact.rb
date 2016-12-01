@@ -1,19 +1,19 @@
 class Contact
-  attr_reader(:first_name, :last_name, :job_title, :company, :mailing_address, :phone_numbers, :email_address)
+  attr_reader(:first_name, :last_name, :job_title, :company, :mailing_addresses, :phone_numbers, :email_addresses)
 
   define_method(:initialize) do |attributes|
     @first_name = attributes.fetch(:first_name)
     @last_name = attributes.fetch(:last_name)
     @job_title = attributes.fetch(:job_title)
     @company = attributes.fetch(:company)
-    @mailing_address = []
+    @mailing_addresses = []
     @phone_numbers = []
-    @email_address = []
+    @email_addresses = []
   end
 
   define_method(:add_mailing_address) do |address|
-    address.set_id(@mailing_address.length() + 1)
-    @mailing_address.push(address)
+    address.set_id(@mailing_addresses.length() + 1)
+    @mailing_addresses.push(address)
   end
 
   define_method(:add_phone_number) do |number|
@@ -21,9 +21,14 @@ class Contact
     @phone_numbers.push(number)
   end
 
+  define_method(:add_email) do |email|
+    email.set_id(@email_addresses.length() + 1)
+    @email_addresses.push(email)
+  end
+
   define_method(:find_address) do |id|
     found_address = nil
-    @mailing_address.each() do |address|
+    @mailing_addresses.each() do |address|
       if address.id == id
         found_address = address
       end
@@ -39,6 +44,16 @@ class Contact
       end
     end
     found_number
+  end
+
+  define_method(:find_email) do |id|
+    found_email = nil
+    @email_addresses.each do |email|
+      if email.id == id
+        found_email = email
+      end
+    end
+    found_email
   end
 
 end
