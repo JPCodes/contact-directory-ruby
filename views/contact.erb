@@ -18,7 +18,14 @@
   <% end %>
 </ul>
 
+<ul>
+  <% (@current_contact.email_addresses()).each do |email| %>
+  <li><a href="/email/<%= email.id() %>/<%= @current_contact.id() %>">Email: <%= email.address() %></a></li>
+  <% end %>
+</ul>
 
 <p><a href="/contact/new_address/<%= @current_contact.id() %>">Add a New Address for this Person</a></p>
 
 <p><a href="/contact/new_phone/<%= @current_contact.id() %>">Add a New Phone Number for this Person</a></p>
+
+<p><a href="/contact/new_email/<%= @current_contact.id() %>">Add a New Email Address for this Person</a></p>
