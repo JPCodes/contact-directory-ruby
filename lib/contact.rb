@@ -29,6 +29,10 @@ class Contact
     found_contact
   end
 
+  define_singleton_method(:contacts) do
+    @@contacts
+  end
+
   define_method(:add_mailing_address) do |address|
     address.set_id(@mailing_addresses.length() + 1)
     @mailing_addresses.push(address)

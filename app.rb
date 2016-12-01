@@ -20,6 +20,12 @@ post('/new_contact') do
   @company = params.fetch('company')
   @job_title = params.fetch('job_title')
 
-  Contact.new({:first_name => @first, :last_name => @last, :company => @company, :job_title => @job_title})
+  Contact.new({:first_name => @first, :last_name => @last, :company => @company, :job_title => @job_title}).save()
   erb(:success)
+end
+
+get('/contacts/all') do
+  @contacts = Contact.contacts()
+  puts "looking for contacts: ", @contacts
+  erb(:all_contacts)
 end

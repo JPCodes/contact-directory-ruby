@@ -72,5 +72,12 @@ describe(Contact) do
     end
   end
 
+  describe('#contacts') do
+    it('returns array of contacts') do
+      @test_contact.save()
+      expect(Contact.contacts()).to(eq([@test_contact]))
+    end
+  end
+
 
 end
