@@ -61,3 +61,25 @@ describe('the add address to contact path', {:type => :feature}) do
     expect(page).to have_content('Portland')
   end
 end
+
+describe('the add email and phone number to contact path', {:type => :feature}) do
+  it('Adds an address to a specific contact and verifies that it is listed under their name') do
+    visit('/')
+    click_link('View contacts')
+    click_link('John')
+    click_link('Add a New Phone Number for this Person')
+    fill_in('phone_number', :with => '5556565')
+    fill_in('phone_type', :with => 'Home')
+    click_button('Add Phone Number')
+    click_link('Home')
+    click_link('View contacts')
+    click_link('John')
+    click_link('Add a New Email Address for this Person')
+    fill_in('email', :with => 'john@portland.org')
+    click_button('Add Email')
+    click_link('Home')
+    click_link('View contacts')
+    click_link('John')
+    expect(page).to have_content('john@portland.org')
+  end
+end
