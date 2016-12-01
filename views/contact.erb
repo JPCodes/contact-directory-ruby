@@ -12,4 +12,13 @@
   <% end %>
 </ul>
 
+<ul>
+  <% (@current_contact.phone_numbers()).each do |number| %>
+  <li><a href="/number/<%= number.id() %>/<%= @current_contact.id() %>">Phone Number: <%= number.phone_number() %></a></li>
+  <% end %>
+</ul>
+
+
 <p><a href="/contact/new_address/<%= @current_contact.id() %>">Add a New Address for this Person</a></p>
+
+<p><a href="/contact/new_phone/<%= @current_contact.id() %>">Add a New Phone Number for this Person</a></p>

@@ -1,0 +1,11 @@
+<h1>Add a new address</h1>
+
+<form class="" action="/create_phone/<%= @current_contact.id() %>" method="post">
+  <label for="phone_number">Phone Number</label>
+  <input type="text" name="phone_number" id="phone_number">
+
+  <label for="phone_type">Phone Type</label>
+  <input type="text" name="phone_type" id="phone_type">
+
+  <button type="submit" name="button">Add Phone Number</button>
+</form>
